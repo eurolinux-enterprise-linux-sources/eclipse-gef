@@ -4,11 +4,11 @@
 
 %global eclipse_base     %{_libdir}/eclipse
 %global eclipse_dropin   %{_datadir}/eclipse/dropins
-%global contextQualifier v20100224-1200
+%global contextQualifier v20100913-2020
 
 Name:      eclipse-gef
-Version:   3.5.2
-Release:   1%{?dist}
+Version:   3.6.1
+Release:   3%{?dist}
 Summary:   Graphical Editing Framework (GEF) Eclipse plugin
 Group:     System Environment/Libraries
 License:   EPL
@@ -20,8 +20,8 @@ URL:       http://www.eclipse.org/gef/
 Source0:   gef-%{version}.tar.gz
 Source1:   get-gef.sh
 
-# disable examples source plugins (you can still get them through the new
-# example project wizard)
+# disable examples source plugins (you can still get them through the
+# new example project wizard)
 # TODO: figure out why this stopped building between rc6 and final
 Patch0:    %{name}-disable-examples-source.patch
 
@@ -70,14 +70,14 @@ to use the Eclipse Graphical Editing Framework (GEF) plugin.
 %prep
 %setup -q -n gef-%{version}
 
-%patch0 -p0
-
 # link to local java api javadocs
 sed -i -e "s|link http://java.sun.com/j2se/1.4.2/docs/api|linkoffline %{_javadocdir}/java %{_javadocdir}/java|" \
   org.eclipse.gef.doc.isv/gefOptions \
   org.eclipse.draw2d.doc.isv/draw2dOptions
 
-# make sure upstream hasn't sneaked in any jars we don't know about
+%patch0 -p0
+
+# make sure upstream hasn't snuck in any jars we don't know about
 JARS=""
 for j in `find -name "*.jar"`; do
   if [ ! -L $j ]; then
@@ -142,8 +142,25 @@ rm -rf %{buildroot}
 %doc org.eclipse.gef.examples-feature/rootfiles/*
 
 %changelog
+* Mon Jan 17 2011 Andrew Overholt <overholt@redhat.com> 3.6.1-3
+- Fix patch that disables examples source plugin.
+
+* Fri Jan 14 2011 Andrew Overholt <overholt@redhat.com> 3.6.1-2
+- Remove example source JARs.
+- Don't build debuginfo.
+
+* Thu Oct 7 2010 Chris Aniszczyk <zx@redhat.com> 3.6.1-1
+- Update to 3.6.1.
+
+* Fri Jul 9 2010 Alexander Kurtakov <akurtako@redhat.com> 3.6.0-1
+- Update to 3.6.0.
+
 * Mon Mar 15 2010 Alexander Kurtakov <akurtako@redhat.com> 3.5.2-1
 - Update to 3.5.2.
+
+* Sun Feb 28 2010 Mat Booth <fedora@matbooth.co.uk> 3.5.2-1
+- Update to 3.5.2 upstream version.
+- Now requires Eclipse 3.5.1.
 
 * Fri Feb 12 2010 Andrew Overholt <overholt@redhat.com> 3.5.1-4
 - Don't build debuginfo if building arch-specific packages.

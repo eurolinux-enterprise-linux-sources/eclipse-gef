@@ -71,11 +71,11 @@ public class Graph extends FigureCanvas implements IContainer {
 
 	// @tag CGraph.Colors : These are the colour constants for the graph, they
 	// are disposed on clean-up
-	public Color LIGHT_BLUE = new Color(null, 216, 228, 248);
-	public Color LIGHT_BLUE_CYAN = new Color(null, 213, 243, 255);
-	public Color GREY_BLUE = new Color(null, 139, 150, 171);
-	public Color DARK_BLUE = new Color(null, 1, 70, 122);
-	public Color LIGHT_YELLOW = new Color(null, 255, 255, 206);
+	public Color LIGHT_BLUE = null;
+	public Color LIGHT_BLUE_CYAN = null;
+	public Color GREY_BLUE = null;
+	public Color DARK_BLUE = null;
+	public Color LIGHT_YELLOW = null;
 
 	public Color HIGHLIGHT_COLOR = ColorConstants.yellow;
 	public Color HIGHLIGHT_ADJACENT_COLOR = ColorConstants.orange;
@@ -107,6 +107,8 @@ public class Graph extends FigureCanvas implements IContainer {
 
 	private ScalableFreeformLayeredPane rootlayer;
 	private ZestRootLayer zestRootLayer;
+
+	private boolean hasPendingLayoutRequest;
 
 	/**
 	 * Constructor for a Graph. This widget represents the root of the graph,
@@ -381,29 +383,42 @@ public class Graph extends FigureCanvas implements IContainer {
 		}
 		super.dispose();
 
-		LIGHT_BLUE.dispose();
-		LIGHT_BLUE_CYAN.dispose();
-		GREY_BLUE.dispose();
-		DARK_BLUE.dispose();
-		LIGHT_YELLOW.dispose();
+		if (LIGHT_BLUE != null) {
+			LIGHT_BLUE.dispose();
+		}
+		if (LIGHT_BLUE_CYAN != null) {
+			LIGHT_BLUE_CYAN.dispose();
+		}
+		if (GREY_BLUE != null) {
+			GREY_BLUE.dispose();
+		}
+		if (DARK_BLUE != null) {
+			DARK_BLUE.dispose();
+		}
+		if (LIGHT_YELLOW != null) {
+			LIGHT_YELLOW.dispose();
+		}
 	}
 
 	/**
-	 * Runs the layout on this graph. It uses the reveal listner to run the
+	 * Runs the layout on this graph. It uses the reveal listener to run the
 	 * layout only if the view is visible. Otherwise it will be deferred until
 	 * after the view is available.
 	 */
 	public void applyLayout() {
-		this.addRevealListener(new RevealListener() {
-			public void revealed(Control c) {
-				Display.getDefault().asyncExec(new Runnable() {
+		if (!hasPendingLayoutRequest) {
+			hasPendingLayoutRequest = true;
+			this.addRevealListener(new RevealListener() {
+				public void revealed(Control c) {
+					Display.getDefault().asyncExec(new Runnable() {
 
-					public void run() {
-						applyLayoutInternal();
-					}
-				});
-			}
-		});
+						public void run() {
+							applyLayoutInternal();
+						}
+					});
+				}
+			});
+		}
 	}
 
 	/**
@@ -885,6 +900,9 @@ public class Graph extends FigureCanvas implements IContainer {
 			}
 		}
 		this.getNodes().remove(node);
+		if (this.getSelection() != null) {
+			this.getSelection().remove(node);
+		}
 		figure2ItemMap.remove(figure);
 	}
 
@@ -987,6 +1005,7 @@ public class Graph extends FigureCanvas implements IContainer {
 	}
 
 	private void applyLayoutInternal() {
+		hasPendingLayoutRequest = false;
 
 		if ((this.getNodes().size() == 0)) {
 			return;
@@ -1023,9 +1042,13 @@ public class Graph extends FigureCanvas implements IContainer {
 		LayoutEntity[] nodesToLayout = getNodesToLayout(getNodes());
 
 		try {
-			Animation.markBegin();
+			if ((nodeStyle & ZestStyles.NODES_NO_LAYOUT_ANIMATION) == 0) {
+				Animation.markBegin();
+			}
 			layoutAlgorithm.applyLayout(nodesToLayout, connectionsToLayout, 0, 0, d.width, d.height, false, false);
-			Animation.run(ANIMATION_TIME);
+			if ((nodeStyle & ZestStyles.NODES_NO_LAYOUT_ANIMATION) == 0) {
+				Animation.run(ANIMATION_TIME);
+			}
 			getLightweightSystem().getUpdateManager().performUpdate();
 
 		} catch (InvalidLayoutConfiguration e) {

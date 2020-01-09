@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.draw2d.geometry.Ray;
  * Ray's tests
  * 
  * @author aboyko
- *
+ * 
  */
 public class RayTest extends TestCase {
 
@@ -40,9 +40,16 @@ public class RayTest extends TestCase {
 		testLengthValues(3, 4, 5);
 		testLengthValues(0, Integer.MAX_VALUE, Integer.MAX_VALUE);
 	}
-	
+
+	public void test_getScalarProduct() {
+		Ray a = new Ray(3, 2);
+		Ray b = new Ray(2, -2);
+		assertTrue(a.dotProduct(b) == 2);
+	}
+
 	private void testLengthValues(int x, int y, double expectedLength) {
 		Ray ray = new Ray(x, y);
 		assertEquals(expectedLength, ray.length(), 0);
 	}
+
 }

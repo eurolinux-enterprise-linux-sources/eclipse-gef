@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,27 +18,25 @@ import java.io.Serializable;
 /**
  * @since 3.1
  */
-public class Notifier 
-	implements Serializable 
-{
+public class Notifier implements Serializable {
 
-protected transient PropertyChangeSupport listeners;
-private static final long serialVersionUID = 1;
+	protected transient PropertyChangeSupport listeners;
+	private static final long serialVersionUID = 1;
 
-public void addPropertyChangeListener(PropertyChangeListener l) {
-	if (listeners == null)
-		listeners = new PropertyChangeSupport(this);
-	listeners.addPropertyChangeListener(l);
-}
+	public void addPropertyChangeListener(PropertyChangeListener l) {
+		if (listeners == null)
+			listeners = new PropertyChangeSupport(this);
+		listeners.addPropertyChangeListener(l);
+	}
 
-protected void firePropertyChange(String prop, Object old, Object newValue) {
-	if (listeners != null)
-		listeners.firePropertyChange(prop, old, newValue);
-}
+	protected void firePropertyChange(String prop, Object old, Object newValue) {
+		if (listeners != null)
+			listeners.firePropertyChange(prop, old, newValue);
+	}
 
-public void removePropertyChangeListener(PropertyChangeListener l) {
-	if (listeners != null)
-		listeners.removePropertyChangeListener(l);
-}
+	public void removePropertyChangeListener(PropertyChangeListener l) {
+		if (listeners != null)
+			listeners.removePropertyChangeListener(l);
+	}
 
 }

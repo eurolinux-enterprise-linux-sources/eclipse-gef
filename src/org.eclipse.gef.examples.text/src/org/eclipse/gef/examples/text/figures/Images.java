@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,19 +21,20 @@ import org.eclipse.swt.graphics.Image;
  */
 public class Images {
 
-public static final Image IMPORTS = createImage("imports.gif");
-public static final Image IMPORT = createImage("importstatement.gif");
-public static final Image PUBLIC = createImage("public.gif");
-public static final Image PRIVATE = createImage("private.gif");
-public static final Image PROTECTED = createImage("protected.gif");
+	public static final Image IMPORTS = createImage("imports.gif");
+	public static final Image IMPORT = createImage("importstatement.gif");
+	public static final Image PUBLIC = createImage("public.gif");
+	public static final Image PRIVATE = createImage("private.gif");
+	public static final Image PROTECTED = createImage("protected.gif");
 
-private static Image createImage(String name) {
-	InputStream stream = Images.class.getResourceAsStream(name);
-	Image image = new Image(null, stream);
-	try {
-		stream.close();
-	} catch (IOException exc) { }
-	return image;
-}
+	private static Image createImage(String name) {
+		InputStream stream = Images.class.getResourceAsStream(name);
+		Image image = new Image(null, stream);
+		try {
+			stream.close();
+		} catch (IOException exc) {
+		}
+		return image;
+	}
 
 }

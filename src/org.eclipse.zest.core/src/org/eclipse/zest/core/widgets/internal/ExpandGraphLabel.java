@@ -23,12 +23,12 @@ import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.zest.core.widgets.GraphContainer;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.zest.core.widgets.GraphContainer;
 
 public class ExpandGraphLabel extends Figure implements ActionListener {
 
@@ -244,8 +244,8 @@ public class ExpandGraphLabel extends Figure implements ActionListener {
 	}
 
 //	public Dimension getPreferredSize(int hint, int hint2) {
-	//	return this.label.getPreferredSize();
-	//}
+//	return this.label.getPreferredSize();
+//}
 
 	public void setTextT(String string) {
 		this.setPreferredSize(null);

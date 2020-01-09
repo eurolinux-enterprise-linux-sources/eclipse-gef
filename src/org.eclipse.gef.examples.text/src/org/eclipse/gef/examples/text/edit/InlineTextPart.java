@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,17 +19,19 @@ import org.eclipse.gef.examples.text.requests.SearchResult;
  */
 public class InlineTextPart extends CompoundTextPart {
 
-public InlineTextPart(Object model) {
-	super(model);
-}
+	public InlineTextPart(Object model) {
+		super(model);
+	}
 
-public void getTextLocation(CaretRequest search, SearchResult result) {
-	if (!search.isRecursive && (search.getType() == CaretRequest.LINE_BOUNDARY 
-			|| search.getType() == CaretRequest.ROW)) {
-		search.setReferenceTextLocation(this, search.isForward ? 0 : getLength());
-		getTextParent().getTextLocation(search, result);		
-	} else
-		super.getTextLocation(search, result);
-}
+	public void getTextLocation(CaretRequest search, SearchResult result) {
+		if (!search.isRecursive
+				&& (search.getType() == CaretRequest.LINE_BOUNDARY || search
+						.getType() == CaretRequest.ROW)) {
+			search.setReferenceTextLocation(this, search.isForward ? 0
+					: getLength());
+			getTextParent().getTextLocation(search, result);
+		} else
+			super.getTextLocation(search, result);
+	}
 
 }

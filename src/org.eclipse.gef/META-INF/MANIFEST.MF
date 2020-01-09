@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.gef; singleton:=true
-Bundle-Version: 3.5.1.qualifier
+Bundle-Version: 3.6.1.qualifier
 Bundle-Activator: org.eclipse.gef.internal.InternalGEFPlugin
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
@@ -13,7 +13,7 @@ Export-Package: org.eclipse.gef,
  org.eclipse.gef.editparts,
  org.eclipse.gef.editpolicies,
  org.eclipse.gef.handles,
- org.eclipse.gef.internal;x-internal:=true,
+ org.eclipse.gef.internal;x-friends:="org.eclipse.gef.examples.text,org.eclipse.gef.examples.logic",
  org.eclipse.gef.internal.icons;x-internal:=true,
  org.eclipse.gef.internal.ui.palette;x-internal:=true,
  org.eclipse.gef.internal.ui.palette.editparts;x-internal:=true,

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,14 +16,14 @@ package org.eclipse.gef.examples.text.actions;
  */
 public interface StyleProvider {
 
-void addStyleListener(StyleListener listener);
+	void addStyleListener(StyleListener listener);
 
-Object getStyle(String styleID);
+	Object getStyle(String styleID);
 
-Object getStyleState(String styleID);
+	Object getStyleState(String styleID);
 
-void removeStyleListener(StyleListener listener);
+	void removeStyleListener(StyleListener listener);
 
-void setStyle(String styleID, Object newValue);
+	void setStyle(String styleID, Object newValue);
 
 }

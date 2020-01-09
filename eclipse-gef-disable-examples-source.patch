@@ -1,36 +1,10 @@
---- org.eclipse.gef.examples-feature/feature.xml.orig	2009-08-13 20:49:19.000000000 +0300
-+++ org.eclipse.gef.examples-feature/feature.xml	2009-10-27 12:30:02.050817630 +0200
-@@ -56,32 +56,5 @@
-          version="0.0.0"
-          unpack="false"/>
- 
--   <plugin
--         id="org.eclipse.gef.examples.logic.source"
--         download-size="0"
--         install-size="0"
--         version="0.0.0"
--         unpack="false"/>
--
--   <plugin
--         id="org.eclipse.gef.examples.flow.source"
--         download-size="0"
--         install-size="0"
--         version="0.0.0"
--         unpack="false"/>
--
--   <plugin
--         id="org.eclipse.gef.examples.text.source"
--         download-size="0"
--         install-size="0"
--         version="0.0.0"
--         unpack="false"/>
--
--   <plugin
--         id="org.eclipse.gef.examples.shapes.source"
--         download-size="0"
--         install-size="0"
--         version="0.0.0"
--         unpack="false"/>
--
-+   
- </feature>
+--- org.eclipse.gef.examples-feature/feature.xml	2011-01-17 10:23:23.000000000 -0500
++++ org.eclipse.gef.examples-feature/feature.xml	2011-01-17 10:24:01.000000000 -0500
+@@ -37,7 +37,6 @@
+    <requires>
+       <import plugin="org.eclipse.gef" version="3.6.0" match="compatible"/>
+    </requires>   
+-   <includes         id="org.eclipse.gef.examples.source"         version="0.0.0"/>
+    <plugin
+          id="org.eclipse.gef.examples.logic"
+          download-size="0"

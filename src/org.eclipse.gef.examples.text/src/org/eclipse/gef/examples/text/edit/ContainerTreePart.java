@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,44 +13,43 @@ package org.eclipse.gef.examples.text.edit;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
 
-import org.eclipse.swt.widgets.TreeItem;
-
 import org.eclipse.gef.examples.text.model.Container;
 import org.eclipse.gef.examples.text.model.Style;
+import org.eclipse.swt.widgets.TreeItem;
 
 /**
  * @since 3.1
  */
 public class ContainerTreePart extends ExampleTreePart {
 
-public ContainerTreePart(Object model) {
-	setModel(model);
-}
-
-protected List getModelChildren() {
-	return ((Container)getModel()).getChildren();
-}
-
-public void propertyChange(PropertyChangeEvent evt) {
-	if (evt.getPropertyName().equals("children"))
-		refreshChildren();
-}
-
-private Container getContainer() {
-	return (Container)getModel();
-}
-
-protected void refreshChildren() {
-	super.refreshChildren();
-	if (getWidget() instanceof TreeItem) {
-		TreeItem item = (TreeItem)getWidget();
-		item.setExpanded(true);
+	public ContainerTreePart(Object model) {
+		setModel(model);
 	}
-}
 
-protected void refreshVisuals() {
-	StringBuffer label = new StringBuffer();
-	switch (getContainer().getType()) {
+	protected List getModelChildren() {
+		return ((Container) getModel()).getChildren();
+	}
+
+	public void propertyChange(PropertyChangeEvent evt) {
+		if (evt.getPropertyName().equals("children"))
+			refreshChildren();
+	}
+
+	private Container getContainer() {
+		return (Container) getModel();
+	}
+
+	protected void refreshChildren() {
+		super.refreshChildren();
+		if (getWidget() instanceof TreeItem) {
+			TreeItem item = (TreeItem) getWidget();
+			item.setExpanded(true);
+		}
+	}
+
+	protected void refreshVisuals() {
+		StringBuffer label = new StringBuffer();
+		switch (getContainer().getType()) {
 		case Container.TYPE_BULLETED_LIST:
 			label.append("<bullet>");
 			break;
@@ -80,8 +79,8 @@ protected void refreshVisuals() {
 		default:
 			label.append("Unknown container");
 			break;
+		}
+		setWidgetText(label.toString());
 	}
-	setWidgetText(label.toString());
-}
 
 }

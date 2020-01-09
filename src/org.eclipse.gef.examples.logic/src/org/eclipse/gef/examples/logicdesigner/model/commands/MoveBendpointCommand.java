@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2005 IBM Corporation and others.
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,34 +14,30 @@ import org.eclipse.draw2d.Bendpoint;
 
 import org.eclipse.gef.examples.logicdesigner.model.WireBendpoint;
 
-public class MoveBendpointCommand
-	extends BendpointCommand 
-{
+public class MoveBendpointCommand extends BendpointCommand {
 
-private Bendpoint oldBendpoint;
+	private Bendpoint oldBendpoint;
 
-public void execute() {
-	WireBendpoint bp = new WireBendpoint();
-	bp.setRelativeDimensions(getFirstRelativeDimension(), 
-					getSecondRelativeDimension());
-	setOldBendpoint((Bendpoint)getWire().getBendpoints().get(getIndex()));
-	getWire().setBendpoint(getIndex(), bp);
-	super.execute();
-}
+	public void execute() {
+		WireBendpoint bp = new WireBendpoint();
+		bp.setRelativeDimensions(getFirstRelativeDimension(),
+				getSecondRelativeDimension());
+		setOldBendpoint((Bendpoint) getWire().getBendpoints().get(getIndex()));
+		getWire().setBendpoint(getIndex(), bp);
+		super.execute();
+	}
 
-protected Bendpoint getOldBendpoint() {
-	return oldBendpoint;
-}
+	protected Bendpoint getOldBendpoint() {
+		return oldBendpoint;
+	}
 
-public void setOldBendpoint(Bendpoint bp) {
-	oldBendpoint = bp;
-}
+	public void setOldBendpoint(Bendpoint bp) {
+		oldBendpoint = bp;
+	}
 
-public void undo() {
-	super.undo();
-	getWire().setBendpoint(getIndex(), getOldBendpoint());
-}
+	public void undo() {
+		super.undo();
+		getWire().setBendpoint(getIndex(), getOldBendpoint());
+	}
 
 }
-
-

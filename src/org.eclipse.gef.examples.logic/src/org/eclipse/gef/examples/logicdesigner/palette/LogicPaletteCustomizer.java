@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2008 IBM Corporation and others.
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,21 +17,18 @@ import org.eclipse.gef.ui.palette.PaletteCustomizer;
  * 
  * @author Pratik Shah
  */
-public class LogicPaletteCustomizer 
-	extends PaletteCustomizer 
-{
-	
-/**
- * @see org.eclipse.gef.ui.palette.PaletteCustomizer#revertToSaved()
- */
-public void revertToSaved() {
-}
+public class LogicPaletteCustomizer extends PaletteCustomizer {
 
+	/**
+	 * @see org.eclipse.gef.ui.palette.PaletteCustomizer#revertToSaved()
+	 */
+	public void revertToSaved() {
+	}
 
-/**
- * @see org.eclipse.gef.ui.palette.PaletteCustomizer#save()
- */
-public void save() {
-}
+	/**
+	 * @see org.eclipse.gef.ui.palette.PaletteCustomizer#save()
+	 */
+	public void save() {
+	}
 
 }

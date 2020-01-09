@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2005-2006, CHISEL Group, University of Victoria, Victoria, BC,
+ * Copyright 2005, 2009, CHISEL Group, University of Victoria, Victoria, BC,
  * Canada. All rights reserved. This program and the accompanying materials are
  * made available under the terms of the Eclipse Public License v1.0 which
  * accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
+import org.eclipse.zest.core.viewers.IFigureProvider;
 import org.eclipse.zest.core.viewers.INestedContentProvider;
 import org.eclipse.zest.core.widgets.Graph;
 import org.eclipse.zest.core.widgets.GraphConnection;
@@ -177,11 +178,31 @@ public abstract class AbstractStylingModelFactory implements IStylingGraphModelF
 				return oldConnection;
 			}
 		}
+		IFigureProvider figureProvider = null;
+		if (getLabelProvider() instanceof IFigureProvider) {
+			figureProvider = (IFigureProvider) getLabelProvider();
+		}
 		if (sn == null) {
-			sn = createNode(graph, source);
+			IFigure figure = null;
+			if (figureProvider != null) {
+				figure = figureProvider.getFigure(source);
+			}
+			if (figure != null) {
+				sn = createNode(graph, source, figure);
+			} else {
+				sn = createNode(graph, source);
+			}
 		}
 		if (dn == null) {
-			dn = createNode(graph, dest);
+			IFigure figure = null;
+			if (figureProvider != null) {
+				figure = figureProvider.getFigure(source);
+			}
+			if (figure != null) {
+				dn = createNode(graph, dest, figure);
+			} else {
+				dn = createNode(graph, dest);
+			}
 		}
 		GraphConnection c = viewer.addGraphModelConnection(element, sn, dn);
 		styleItem(c);
@@ -220,7 +241,11 @@ public abstract class AbstractStylingModelFactory implements IStylingGraphModelF
 	}
 
 	public GraphNode createNode(Graph graph, Object element) {
-		return this.createNode(graph, element, null);
+		IFigure nodeFigure = null;
+		if (getLabelProvider() instanceof IFigureProvider) {
+			nodeFigure = ((IFigureProvider) getLabelProvider()).getFigure(element);
+		}
+		return this.createNode(graph, element, nodeFigure);
 	}
 
 	public void setConnectionStyle(int style) {

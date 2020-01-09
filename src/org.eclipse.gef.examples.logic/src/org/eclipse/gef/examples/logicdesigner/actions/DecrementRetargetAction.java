@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2005 IBM Corporation and others.
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,17 +22,16 @@ import org.eclipse.gef.examples.logicdesigner.LogicPlugin;
  */
 public class DecrementRetargetAction extends RetargetAction {
 
-/**
- * Constructor for IncrementRetargetAction.
- * @param actionID
- * @param label
- */
-public DecrementRetargetAction() {
-	super(IncrementDecrementAction.DECREMENT,
-		LogicMessages.IncrementDecrementAction_Decrement_ActionLabelText);
-	setToolTipText(LogicMessages.IncrementDecrementAction_Decrement_ActionToolTipText);
-	setImageDescriptor(ImageDescriptor
-		.createFromFile(LogicPlugin.class,"icons/minus.gif")); //$NON-NLS-1$
-}
+	/**
+	 * Constructor for IncrementRetargetAction.
+	 */
+	public DecrementRetargetAction() {
+		super(
+				IncrementDecrementAction.DECREMENT,
+				LogicMessages.IncrementDecrementAction_Decrement_ActionLabelText);
+		setToolTipText(LogicMessages.IncrementDecrementAction_Decrement_ActionToolTipText);
+		setImageDescriptor(ImageDescriptor.createFromFile(LogicPlugin.class,
+				"icons/minus.gif")); //$NON-NLS-1$
+	}
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2005 IBM Corporation and others.
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,28 +14,26 @@ import org.eclipse.gef.commands.Command;
 
 import org.eclipse.gef.examples.logicdesigner.model.LogicLabel;
 
-public class LogicLabelCommand
-	extends Command
-{
+public class LogicLabelCommand extends Command {
 
-private String newName, oldName;
-private LogicLabel label;
+	private String newName, oldName;
+	private LogicLabel label;
 
-public LogicLabelCommand(LogicLabel l, String s) {
-	label = l;
-	if (s != null)
-		newName = s;
-	else
-		newName = "";  //$NON-NLS-1$
-}
+	public LogicLabelCommand(LogicLabel l, String s) {
+		label = l;
+		if (s != null)
+			newName = s;
+		else
+			newName = ""; //$NON-NLS-1$
+	}
 
-public void execute() {
-	oldName = label.getLabelContents();
-	label.setLabelContents(newName);
-}
+	public void execute() {
+		oldName = label.getLabelContents();
+		label.setLabelContents(newName);
+	}
 
-public void undo() {
-	label.setLabelContents(oldName);
-}
+	public void undo() {
+		label.setLabelContents(oldName);
+	}
 
 }

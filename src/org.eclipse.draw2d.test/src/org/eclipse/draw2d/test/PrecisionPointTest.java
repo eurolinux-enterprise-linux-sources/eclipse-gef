@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 public class PrecisionPointTest extends TestCase {
 
 	/**
-	 * https://bugs.eclipse.org/bugs/show_bug.cgi?id=227977 
+	 * https://bugs.eclipse.org/bugs/show_bug.cgi?id=227977
 	 */
 	public void testEquals() {
 		PrecisionPoint p1 = new PrecisionPoint(0.1, 0.1);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,22 +16,27 @@ package org.eclipse.gef.examples.text;
  */
 public interface TextCommand {
 
-/**
- * Returns the viewer's selection range for the state after execution or redo.
- * @since 3.1
- * @param viewer the viewer
- * @return the range
- */
-SelectionRange getRedoSelectionRange(GraphicalTextViewer viewer);
+	/**
+	 * Returns the viewer's selection range for the state after execution or
+	 * redo.
+	 * 
+	 * @since 3.1
+	 * @param viewer
+	 *            the viewer
+	 * @return the range
+	 */
+	SelectionRange getRedoSelectionRange(GraphicalTextViewer viewer);
 
-SelectionRange getExecuteSelectionRange(GraphicalTextViewer viewer);
+	SelectionRange getExecuteSelectionRange(GraphicalTextViewer viewer);
 
-/**
- * Returns the viewer's selection range for the state prior to execution.
- * @since 3.1
- * @param viewer the viewer
- * @return the range
- */
-SelectionRange getUndoSelectionRange(GraphicalTextViewer viewer);
+	/**
+	 * Returns the viewer's selection range for the state prior to execution.
+	 * 
+	 * @since 3.1
+	 * @param viewer
+	 *            the viewer
+	 * @return the range
+	 */
+	SelectionRange getUndoSelectionRange(GraphicalTextViewer viewer);
 
 }

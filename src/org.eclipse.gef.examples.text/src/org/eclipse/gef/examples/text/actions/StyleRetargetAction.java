@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,10 @@ import org.eclipse.ui.actions.RetargetAction;
  * @since 3.1
  */
 public class StyleRetargetAction extends RetargetAction {
-	
-public StyleRetargetAction(String styleID) {
-	super(styleID, "", IAction.AS_CHECK_BOX);
-	BooleanStyleAction.configureStyleAction(this);
-}
+
+	public StyleRetargetAction(String styleID) {
+		super(styleID, "", IAction.AS_CHECK_BOX);
+		BooleanStyleAction.configureStyleAction(this);
+	}
 
 }

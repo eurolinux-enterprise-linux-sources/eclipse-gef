@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2005 IBM Corporation and others.
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,23 +14,22 @@ import org.eclipse.swt.graphics.Image;
 
 import org.eclipse.gef.examples.logicdesigner.LogicMessages;
 
-public class LiveOutput
-	extends SimpleOutput
-{
+public class LiveOutput extends SimpleOutput {
 
-private static Image LIVE_ICON = createImage(LiveOutput.class, "icons/live16.gif");  //$NON-NLS-1$
-static final long serialVersionUID = 1;
+	private static Image LIVE_ICON = createImage(LiveOutput.class,
+			"icons/live16.gif"); //$NON-NLS-1$
+	static final long serialVersionUID = 1;
 
-public Image getIconImage() {
-	return LIVE_ICON;
-}
+	public Image getIconImage() {
+		return LIVE_ICON;
+	}
 
-public boolean getResult() {
-	return true;
-}
+	public boolean getResult() {
+		return true;
+	}
 
-public String toString(){
-	return LogicMessages.LiveOutput_LabelText;
-}
+	public String toString() {
+		return LogicMessages.LiveOutput_LabelText;
+	}
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 NAME="gef"
-VERSION=3.5.2
-TAG="R201002241200"
+VERSION=3.6.1
+TAG="R201009132020"
 
 echo "Exporting from CVS..."
 mkdir $NAME-$VERSION

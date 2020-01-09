@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2005 IBM Corporation and others.
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,18 +20,19 @@ public class LogicCreationWizard extends Wizard implements INewWizard {
 	private IStructuredSelection selection;
 	private IWorkbench workbench;
 
-public void addPages(){
-	logicPage = new LogicWizardPage1(workbench,selection);
-	addPage(logicPage);
-}
+	public void addPages() {
+		logicPage = new LogicWizardPage1(workbench, selection);
+		addPage(logicPage);
+	}
 
-public void init(IWorkbench aWorkbench,IStructuredSelection currentSelection) {
-	workbench = aWorkbench;
-	selection = currentSelection;
-}
+	public void init(IWorkbench aWorkbench,
+			IStructuredSelection currentSelection) {
+		workbench = aWorkbench;
+		selection = currentSelection;
+	}
 
-public boolean performFinish(){
-	return logicPage.finish();
-}
+	public boolean performFinish() {
+		return logicPage.finish();
+	}
 
 }

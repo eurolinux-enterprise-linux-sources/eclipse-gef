@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2005 IBM Corporation and others.
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,17 +14,17 @@ import org.eclipse.draw2d.StackLayout;
 
 import org.eclipse.gef.examples.logicdesigner.model.SimpleOutput;
 
-public class OutputFigure 
-	extends NodeFigure 
-{
-		
-public OutputFigure() {
-	FixedConnectionAnchor outputConnectionAnchor = new FixedConnectionAnchor(this);
-	outputConnectionAnchor.topDown = false;
-	outputConnectionAnchor.offsetH = 7;
-	outputConnectionAnchors.addElement(outputConnectionAnchor);
-	connectionAnchors.put(SimpleOutput.TERMINAL_OUT, outputConnectionAnchor);
-	setLayoutManager(new StackLayout());
-}
+public class OutputFigure extends NodeFigure {
+
+	public OutputFigure() {
+		FixedConnectionAnchor outputConnectionAnchor = new FixedConnectionAnchor(
+				this);
+		outputConnectionAnchor.topDown = false;
+		outputConnectionAnchor.offsetH = 7;
+		outputConnectionAnchors.addElement(outputConnectionAnchor);
+		connectionAnchors
+				.put(SimpleOutput.TERMINAL_OUT, outputConnectionAnchor);
+		setLayoutManager(new StackLayout());
+	}
 
 }

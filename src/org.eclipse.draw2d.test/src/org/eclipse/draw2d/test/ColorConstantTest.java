@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2008 IBM Corporation and others.
+ * Copyright (c) 2006, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ public class ColorConstantTest extends TestCase {
 		final Boolean result[] = new Boolean[2];
 		result[0] = Boolean.FALSE;
 		result[1] = Boolean.FALSE;
-		
+
 		Thread testThread = new Thread() {
 			public void run() {
 				try {
@@ -44,15 +44,15 @@ public class ColorConstantTest extends TestCase {
 				} catch (Exception ex) {
 					result[0] = Boolean.FALSE;
 				}
-				
+
 				result[1] = Boolean.TRUE;
 			}
 		};
-		
+
 		testThread.start();
-		
+
 		while (!result[1].booleanValue()) {
-            Display.getDefault().readAndDispatch();
+			Display.getDefault().readAndDispatch();
 		}
 
 		assertTrue(result[0].booleanValue());
