@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!-- ============================================================================= -->
+<!-- Define the top level topics                                                   -->
+<!-- ============================================================================= -->
+
+<toc label="GEF and Draw2d Plug-in Developer Guide">
+	<topic label="Programmer&apos;s Guide" href="guide.html">
+		<link toc="topics_Guide.xml" />
+	</topic>
+	<topic label="Reference">
+		<topic label="API Reference">
+			<link toc="topics_Reference.xml" />
+		</topic>
+	</topic>
+	<topic label="Examples Guide">
+		<link toc="topics_Samples.xml" />
+	</topic>
+	<topic label="Legal" href="notices.html"/>
+</toc>
